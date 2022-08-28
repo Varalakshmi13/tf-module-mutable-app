@@ -18,9 +18,6 @@ resource "aws_instance" "od" {
 
 }
 
-locals {
-  ALL_INSTANCE_IDS = concat(aws_instance.od.*.id, aws_spot_instance_request.spot.*.spot_instance_id)
-}
 resource "aws_ec2_tag" "name-tag" {
   count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
   resource_id = element(local.ALL_INSTANCE_IDS, count.index)
