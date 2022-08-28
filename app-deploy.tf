@@ -11,7 +11,7 @@ resource "null_resource" "app-deploy" {
       password = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["SSH_PASSWORD"]
     }
     inline = [
-      ansible-pull -U https://github.com/varalakshmi13/ansible roboshop.yml  -e role_name=${var.COMPONENT} -e HOST=localhost -e APP_VERSION=${var.APP_VERSION} -e ENV=${var.ENV}"
+      "ansible-pull -U https://github.com/varalakshmi13/ansible roboshop.yml  -e role_name=${var.COMPONENT} -e HOST=localhost -e APP_VERSION=${var.APP_VERSION} -e ENV=${var.ENV}"
     ]
   }
 }
