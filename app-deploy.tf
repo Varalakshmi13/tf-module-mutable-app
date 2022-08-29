@@ -1,7 +1,7 @@
 resource "null_resource" "app-deploy" {
   triggers = {
-      //abc = var.APP_VERSION
-      abc = timestamp()
+      //abc = var.APP_VERSION //this line can trigger if there is change in app version
+      abc = timestamp() //triggers all the time on every run
   }
   count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
   provisioner "remote-exec" {
