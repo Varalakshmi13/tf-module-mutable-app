@@ -7,3 +7,7 @@ variable "APP_PORT" {}
 variable "WORKSTATION_IP" {}
 variable "APP_VERSION" {}
 variable "LB_TYPE" {}
+
+variable "ALB_ARN" {}
+variable "LISTENER_ARN" {}
+variable "ALB_ADDRESS" {}
