@@ -11,7 +11,7 @@ data "terraform_remote_state" "alb" {
   backend = "s3"
   config = {
     bucket = "terraform-gvl"
-    key    = "vpc/${var.ENV}/terraform.tfstate"
+    key    = "alb/${var.ENV}/terraform.tfstate"
     region = "us-east-1"
   }
 }
