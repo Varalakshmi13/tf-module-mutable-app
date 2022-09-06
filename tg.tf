@@ -10,7 +10,7 @@ resource "aws_lb_target_group_attachment" "instance-attach" {
   count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
   target_group_arn = aws_lb_target_group.app.arn
   target_id        = element(local.ALL_INSTANCE_IDS, count.index )
-  port             =var.APP_PORT
+  port             = var.APP_PORT
 }
 
 
@@ -24,6 +24,7 @@ resource "aws_lb_listener_rule" "app_rule" {
     target_group_arn = aws_lb_target_group.app.arn
   }
 
+  
   condition {
     host_header {
       values = ["${var.COMPONENT}-${var.ENV}.${data.terraform_remote_state.vpc.outputs.HOSTEDZONE_PRIVATE_ZONE}"]
